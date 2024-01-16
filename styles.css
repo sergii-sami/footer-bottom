@@ -1,0 +1,191 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+header {
+    grid-area: header;
+    height: 150px;
+    background-image: url('images/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+nav {
+    grid-area: menu; 
+}
+main {
+    grid-area: main;
+}
+footer {
+    grid-area: footer;
+    background-color:rgba(0, 0, 0);
+    text-align: center;
+    font-size: 15px;
+    color:white;
+}
+ul li {
+    padding-bottom: 10px;
+}
+.body-grid-container {
+    display: grid;
+    grid-template-areas: 
+        'header header header header header header'
+        'menu main main main right right'
+        'footer footer footer footer footer footer';
+    grid-template-rows: auto 1fr auto;
+    column-gap: 20px;
+}
+.menu-grid-container {
+    list-style-position: inside;
+    list-style-type: none;
+    font-weight: bold;
+    border-style: outset;
+    border-radius: 12px;
+    border-width: 2px;
+    border-color: black;
+    padding: 10px;
+    background-color:rgba(23, 23, 23, 0.95);
+}
+.menu-grid-container a {
+    color: white;
+}
+.right-grid-container {
+    grid-area: right;
+    border-left-style: solid;
+    border-width: 1px;
+    padding: 10px;
+}
+.news-feed {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 20px;
+    padding: 0;
+    list-style-type: none;
+}
+.news-feed-li {
+    display: flex;
+    align-items: center;
+}
+.news-feed-li a {
+    margin-left: 3px;
+}
+.news-feed-img {
+    width: 50px;
+}
+.news-article-flex {
+    display: flex;
+    align-content: space-between;
+    margin: 20px auto;
+    padding-bottom: 10px;
+    border-bottom-style: dotted;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0);
+}
+.news-article-flex img {
+    max-width: 200px;
+    margin: auto 10px;
+}
+.news-article-flex:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+/* Buttons */
+.menu-btn {
+    position: absolute;
+    top: 110px;
+    left: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 12px;
+    background-color: rgba(44, 44, 44);
+    padding: 5px 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+    cursor: pointer;
+    opacity: 1;
+}
+.contact-btn {
+    position: fixed;
+    z-index: +1;
+    bottom: 70px;
+    right: 10px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.800);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: white;
+}
+.contact-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: large;
+    transition: 0.5s;
+}
+.contact-btn span:after {
+    content: 'Ota yhteyttä';
+    position: absolute;
+    opacity: 0;
+    top: 4px;
+    right: 5px;
+    transition: 0.5s;
+}
+.contact-btn:hover span {
+    padding-right: 150px;
+}
+.contact-btn:hover span:after {
+    opacity: 1;
+    right: 5px;
+}
+.dialog-btn {
+    margin: 20px 5px;
+    border-radius: 10px;
+    background-color: rgba(44, 44, 44);
+    padding: 5px 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+}
+.dialog-btn:hover,  .menu-btn:hover{
+    background-color: aliceblue;
+    color: black;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .body-grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        'header'
+        'menu'
+        'main'
+        'right'
+        'footer';
+        grid-template-rows: auto auto 1fr auto auto;
+    }
+    main {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .right-grid-container {
+        border: none;
+    }
+    .news-article-flex, .news-article-flex:nth-of-type(even) {
+      flex-direction: column;
+    }
+    .dialog-btn {
+        margin-left: 40%;
+    }
+}
